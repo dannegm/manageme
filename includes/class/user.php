@@ -87,7 +87,7 @@ class User
 
 	public function getInfo ($user) {
 		$conn = $this->_mysqli;
-		$query = "SELECT * FROM `{$this->_tb_users}` WHERE `username` = '{$value}'";
+		$query = "SELECT * FROM `{$this->_tb_users}` WHERE `username` = '{$user}'";
 		$get_data = $conn->query($query);
 		$result = $get_data->fetch_assoc();
 		$res = Array(
@@ -132,6 +132,7 @@ class User
 
 					setcookie('uid', $uid, time() + 604800);
 					setcookie('user', $user, time() + 604800);
+
 					if ($keep == 'keep') {
 						setcookie('token', $token, time() + 604800);
 					} else {

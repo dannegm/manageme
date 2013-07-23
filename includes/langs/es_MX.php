@@ -29,12 +29,25 @@ $lang = array(
 	'menu' => array(
 		'resume' => 'Resumen',
 		'inbox' => 'Mensajes',
-		'articles' => 'Art&iacute;culos',
+		'content' => 'Contenido',
 		'stats' => 'Estad&iacute;sticas',
 		'profiles' => 'Perfiles',
 		'activity' => 'Actividad',
 		'config' => 'Configuraciones',
 		'exit' => 'Salir'
+	),
+
+	'profiles' => array(
+		'title' => 'Perfiles',
+		'description' => 'Podr&aacute;s gestionar los usuarios registrados en tu sitio',
+		'gui' => array(
+			'myprofile' => 'Mi perfil',
+			'bio' => 'Biograf&iacute;a',
+			'activity' => 'Actividad reciente',
+			'seemore' => 'ver m&aacute;s',
+			'otherprofiles' => 'Otros perfiles',
+			'createprofile' => 'Crear usuario'
+		)
 	)
 );
 

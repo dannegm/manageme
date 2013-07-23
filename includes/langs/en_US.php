@@ -29,12 +29,25 @@ $lang = array(
 	'menu' => array(
 		'resume' => 'Resume',
 		'inbox' => 'Inbox',
-		'articles' => 'Articles',
+		'content' => 'Content',
 		'stats' => 'Statistics',
 		'profiles' => 'Profiles',
 		'activity' => 'Activity',
 		'config' => 'Settings',
 		'exit' => 'Sign out'
+	),
+
+	'profiles' => array(
+		'title' => 'Profiles',
+		'description' => 'You can manage the users register into you website',
+		'gui' => array(
+			'myprofile' => 'My Profile',
+			'bio' => 'Biografy',
+			'activity' => 'Last activity',
+			'seemore' => 'see more',
+			'otherprofiles' => 'Another users',
+			'createprofile' => 'New user'
+		)
 	)
 );
 

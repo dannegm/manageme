@@ -12,6 +12,7 @@
 
 	define('INLANGS', DURL . 'includes/langs/');
 	define('TOAPPS', DURL . 'includes/apps/');
+	define('TOGUIAPPS', DURL . 'includes/guiapps/');
 	define('TOPHP', DURL . 'includes/php/');
 	define('TOJS', DURL . 'includes/js/');
 	define('TOLESS', DURL . 'includes/less/');
