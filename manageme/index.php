@@ -2,11 +2,12 @@
 include_once('../config.php');
 include_once(INCLASS . 'user.php');
 
-session_start();
-
-if (isset($_SESSION['user'])) {
+if (!isset($_COOKIE['user'])) {
+	//header('Location: login.php');
+	var_dump($_COOKIE);
+} else {
 	$u = new User ();
-	$isLogin = $u->login($_SESSION['user']);
+	$isLogin = $u->login($_COOKIE['user']);
 	if ($isLogin) {
 		$lang = file_get_contents(INLANGS . LANG . '.php');
 			$lang = json_decode($lang);
@@ -86,10 +87,7 @@ if (isset($_SESSION['user'])) {
 <?php
 	} else {
 		die ($user->error());
-		//header('Location: login.php');
+		header('Location: login.php');
 	}
-} else {
-	//header('Location: login.php');
-	echo var_dump($_SESSION);
 }
 ?>

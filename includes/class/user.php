@@ -130,12 +130,13 @@ class User
 					$this->update($user, 'login', 'yep');
 					$this->update($user, 'token', $token);
 
-					$_SESSION['uid'] = $uid;
-					$_SESSION['user'] = $user;
-					$_SESSION['token'] = $token;
-
+					setcookie('uid', $uid, time() + 604800);
+					setcookie('user', $user, time() + 604800);
 					if ($keep == 'keep') {
-						setcookie('token', $token);
+						setcookie('token', $token, time() + 604800);
+					} else {
+						session_start();
+						$_SESSION['token'] = $token;
 					}
 
 					return true;
@@ -157,7 +158,6 @@ class User
 				if (isset($_COOKIE['token'])) {
 					if ($_COOKIE['token'] == $token) {
 						setcookie('token', $newToken, time() + 604800);
-						$_SESSION['token'] = $newToken;
 						return true;
 					} else {
 						$this->_error = 'Token inválido';

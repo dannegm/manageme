@@ -2,8 +2,6 @@
 include_once('../config.php');
 include_once(INCLASS . 'user.php');
 
-session_start();
-
 if (isset($_COOKIE['token'])) {
 	$user = new User ();
 	$isLogin = $user->login($_COOKIE['user']);
