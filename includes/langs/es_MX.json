@@ -1,0 +1,30 @@
+{
+	'lang': 'Espa&ntilde;ol - M&eacute;xico',
+	'copyright': 'Desarrollado por Dannegm &copy; 2013',
+	'title': 'Manageme',
+
+	'login': {
+		'wellcome': {
+			'title': 'Iniciar sesi&oacute;n',
+			'text': 'Ingresa tu nombre de usuario y contrase&ntilde;a para poder acceder.'
+		},
+		'form': {
+			'username': 'Usuario',
+			'password': 'Contrase&ntilde;a',
+			'login': 'Entrar',
+			'keep_login': 'Mantenerme logueado',
+			'forgoten_pass': 'Olvid&eacute; mi contrase&ntilde;a'
+		}
+	},
+
+	'menu': {
+		'resume': 'Resumen',
+		'inbox': 'Mensajes',
+		'articles': 'Art&iacute;culos',
+		'stats': 'Estad&iacute;sticas',
+		'profiles': 'Perfiles',
+		'activity': 'Actividad',
+		'config': 'Configuraciones',
+		'exit': 'Salir'
+	}
+}
