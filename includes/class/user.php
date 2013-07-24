@@ -97,6 +97,7 @@ class User
 			'name' => $result['name'],
 			'email' => $result['email'],
 			'rol' => $result['rol'],
+			'bio' => $result['bio'],
 			'date' => $result['date']
 		);
 		return $res;
@@ -112,6 +113,24 @@ class User
 		} else {
 			return true;
 		}
+	}
+
+	public function logout ($user) {
+		$uid = $this->consult('uid', $user);
+		$token = genToken("{$uid}|{$user}|{$pass}");
+		$this->update($user, 'login', 'nope');
+		$this->update($user, 'token', $token);
+
+		setcookie('uid', '', time() - 3600, '/');
+		setcookie('user', '', time() - 3600, '/');
+
+		if (isset($_COOKIE['token'])) {
+			setcookie('token', '', time() - 3600, '/');
+		} else {
+			session_start();
+			unset($_SESSION['token']);
+		}
+		return true;
 	}
 
 	public function login ($user) {
@@ -130,11 +149,11 @@ class User
 					$this->update($user, 'login', 'yep');
 					$this->update($user, 'token', $token);
 
-					setcookie('uid', $uid, time() + 604800);
-					setcookie('user', $user, time() + 604800);
+					setcookie('uid', $uid, time() + 604800, '/');
+					setcookie('user', $user, time() + 604800, '/');
 
 					if ($keep == 'keep') {
-						setcookie('token', $token, time() + 604800);
+						setcookie('token', $token, time() + 604800, '/');
 					} else {
 						session_start();
 						$_SESSION['token'] = $token;
@@ -147,6 +166,7 @@ class User
 				}
 			} else {
 				$this->_error = "el usuario {$user} no existe";
+				return false;
 			}
 		} else {
 			if (!$this->exist($user)) {
@@ -158,7 +178,8 @@ class User
 
 				if (isset($_COOKIE['token'])) {
 					if ($_COOKIE['token'] == $token) {
-						setcookie('token', $newToken, time() + 604800);
+						$this->update($user, 'token', $newToken);
+						setcookie('token', $newToken, time() + 604800, '/');
 						return true;
 					} else {
 						$this->_error = 'Token inválido';
@@ -167,6 +188,7 @@ class User
 				} else {
 					session_start();
 					if ($_SESSION['token'] == $token) {
+						$this->update($user, 'token', $newToken);
 						$_SESSION['token'] = $newToken;
 						return true;
 					} else {

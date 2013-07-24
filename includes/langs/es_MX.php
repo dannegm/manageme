@@ -37,16 +37,29 @@ $lang = array(
 		'exit' => 'Salir'
 	),
 
+	'roles' => array(
+		'admin' => 'Administrador',
+		'cdc' => 'Creador de contenido',
+		'user' => 'Usuario',
+		'demo' => 'Usuario de demostraci&oacute;n',
+		'sub' => 'Subscriptor',
+		'mod' => 'Moderador',
+		'god' => 'Nivel dios'
+	),
+
 	'profiles' => array(
 		'title' => 'Perfiles',
-		'description' => 'Podr&aacute;s gestionar los usuarios registrados en tu sitio',
 		'gui' => array(
 			'myprofile' => 'Mi perfil',
-			'bio' => 'Biograf&iacute;a',
+			'bio' => 'Biografía',
+			'post' => 'Posts',
+			'likes' => 'Likes',
+			'comments' => 'Comments',
+
 			'activity' => 'Actividad reciente',
 			'seemore' => 'ver m&aacute;s',
 			'otherprofiles' => 'Otros perfiles',
-			'createprofile' => 'Crear usuario'
+			'createprofile' => 'Nuevo usuario'
 		)
 	)
 );

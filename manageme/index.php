@@ -2,18 +2,16 @@
 include_once('../config.php');
 include_once(INCLASS . 'user.php');
 
-/*
 if (!isset($_COOKIE['user'])) {
-	//header('Location: login.php');
-	var_dump($_COOKIE);
-} else { */
+	header('Location: login.php');
+} else { 
 	$u = new User ();
-	//$isLogin = $u->login($_COOKIE['user']);
-	//if ($isLogin) {
+	$isLogin = $u->login($_COOKIE['user']);
+	if ($isLogin) {
 		$lang = file_get_contents(INLANGS . LANG . '.php');
 			$lang = json_decode($lang);
 
-		$user = $u->getInfo('dannegm');
+		$user = $u->getInfo($_COOKIE['user']);
 ?>
 <!doctype html>
 <!-- [ <?php echo $lang->copyright; ?> - http://dannegm.pro ] -->
@@ -30,6 +28,7 @@ if (!isset($_COOKIE['user'])) {
 	<script src="<?php echo TOJS . 'less.min.js'; ?>"></script>
 	<script>
 		function loadContent (site, title) {
+			$('#loadContent').html('<img id="loader" src="<?php echo TOIMG . 'loader.gif'; ?>" />');
 			$('#secTitle h2').hide();
 			$('#sideMenu li').removeClass('active');
 			switch ( site ) {
@@ -54,7 +53,7 @@ if (!isset($_COOKIE['user'])) {
 					$('#sideMenu .toStats').addClass('active');
 					break;
 				case 'profiles':
-					$('#loadContent').load('<?php echo TOGUIAPPS . "onbuild.php?t=Profiles"; ?>');
+					$('#loadContent').load('<?php echo TOGUIAPPS . "profiles.php"; ?>');
 					$('.h2profiles').show();
 					$('#sideMenu .toProfiles').addClass('active');
 					break;
@@ -105,6 +104,10 @@ if (!isset($_COOKIE['user'])) {
 				e.preventDefault();
 				loadContent('config');
 			});
+
+			$('#logout').live('click', function() {
+				$.get('<?php echo TOAPPS . "logout.php"; ?>',{},function(){ window.location.href = 'login.php'; });
+			});
 		}
 		jQuery(document).ready(init);
 	</script>
@@ -116,7 +119,7 @@ if (!isset($_COOKIE['user'])) {
 	<h2><?php echo $lang->title; ?></h2>
 </header>
 
-<nav>
+<nav id="primaryMenu">
 	<ul id="sideMenu">
 		<li class="toResume active">
 			<i class="resume"></i>
@@ -146,7 +149,7 @@ if (!isset($_COOKIE['user'])) {
 			<i class="config"></i>
 			<span><?php echo $lang->menu->config; ?></span>
 		</li>
-		<li>
+		<li id="logout">
 			<i class="exit"></i>
 			<span><?php echo $lang->menu->exit; ?></span>
 		</li>
@@ -169,9 +172,9 @@ if (!isset($_COOKIE['user'])) {
 </body>
 </html>
 <?php
-/*	} else {
-		die ($user->error());
+	} else {
+		//die ($u->error());
 		header('Location: login.php');
 	}
-}*/
+}
 ?>

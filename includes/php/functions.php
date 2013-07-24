@@ -36,6 +36,33 @@ function genToken ($data) {
 	return $token;
 }
 
+function rol2text ($rol, $lang) {
+	switch ($rol) {
+		case 'admin':
+			$rol = $lang->roles->admin;
+			break;
+		case 'cdc':
+			$rol = $lang->roles->cdc;
+			break;
+		case 'user':
+			$rol = $lang->roles->user;
+			break;
+		case 'demo':
+			$rol = $lang->roles->demo;
+			break;
+		case 'sub':
+			$rol = $lang->roles->sub;
+			break;
+		case 'mod':
+			$rol = $lang->roles->mod;
+			break;
+		case 'god':
+			$rol = $lang->roles->god;
+			break;
+	}
+	return $rol;
+}
+
 /*
 	Genera clave aleatoria con un prefijo
 	Modo de uso:

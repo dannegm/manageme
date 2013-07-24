@@ -37,15 +37,28 @@ $lang = array(
 		'exit' => 'Sign out'
 	),
 
+	'roles' => array(
+		'admin' => 'Administrator',
+		'cdc' => 'Content creator',
+		'user' => 'User',
+		'demo' => 'Demostration user',
+		'sub' => 'Subscriptor',
+		'mod' => 'Moderator',
+		'god' => 'God level'
+	),
+
 	'profiles' => array(
-		'title' => 'Profiles',
-		'description' => 'You can manage the users register into you website',
+		'title' => 'PProfiles',
 		'gui' => array(
-			'myprofile' => 'My Profile',
+			'myprofile' => 'My profile',
 			'bio' => 'Biografy',
+			'post' => 'Posts',
+			'likes' => 'Likes',
+			'comments' => 'Comments',
+
 			'activity' => 'Last activity',
 			'seemore' => 'see more',
-			'otherprofiles' => 'Another users',
+			'otherprofiles' => 'Another profiles',
 			'createprofile' => 'New user'
 		)
 	)
