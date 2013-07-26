@@ -3,12 +3,14 @@ include_once('../../config.php');
 include_once(INCLASS . 'user.php');
 
 if (isset($_COOKIE['user'])) {
-	$lang = file_get_contents(INLANGS . LANG . '.php');
-		$lang = json_decode($lang);
-
 	$u = new User ();
-	$user = $u->getInfo($_COOKIE['user']);
-	$myrol = rol2text($user['rol'], $lang);
+	$isLogin = $u->login($_COOKIE['user']);
+	if ($isLogin) {
+		$lang = file_get_contents(INLANGS . LANG . '.php');
+			$lang = json_decode($lang);
+
+		$user = $u->getInfo($_COOKIE['user']);
+		$myrol = rol2text($user['rol'], $lang);
 ?>
 <style>
 	#myprofile {
@@ -171,5 +173,12 @@ if (isset($_COOKIE['user'])) {
 </section>
 
 <?php
+	} else {
+?>
+<blockquote>
+Debes iniciar sesión de nuevo.
+</blockquote>
+<?php
+	}
 }
 ?>

@@ -192,7 +192,10 @@ class User
 							($tk[4] == $ntk[4]) && //ip
 							($tk[5] == $ntk[5]) && //type
 							($tk[6] == $ntk[6]) && //os
-							($tk[7] == $ntk[7])    //nav
+							($tk[7] == $ntk[7]) && //nav
+
+							($tk[0] == $uid) && // UID actual
+							($tk[1] == $user) // usuario actual
 						) {
 
 							$this->update($user, 'token', $newToken);
@@ -200,7 +203,7 @@ class User
 							return true;
 
 						} else {
-							$this->_error = 'los datos de la plataforma no coinciden con el token';
+							$this->_error = 'Token inválido';
 							return false;
 						}
 					} else {
