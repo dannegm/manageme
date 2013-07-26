@@ -178,9 +178,31 @@ class User
 
 				if (isset($_COOKIE['token'])) {
 					if ($_COOKIE['token'] == $token) {
-						$this->update($user, 'token', $newToken);
-						setcookie('token', $newToken, time() + 604800, '/');
-						return true;
+
+						$tk = base64_decode($token);
+							$tk = explode('|', $tk);
+						$ntk = base64_decode($newToken);
+							$ntk = explode('|', $ntk);
+
+						if (
+							($tk[0] == $ntk[0]) && //uid
+							($tk[1] == $ntk[1]) && //user
+							($tk[2] == $ntk[2]) && //pass
+						//	($tk[3] == $ntk[3]) && //date
+							($tk[4] == $ntk[4]) && //ip
+							($tk[5] == $ntk[5]) && //type
+							($tk[6] == $ntk[6]) && //os
+							($tk[7] == $ntk[7])    //nav
+						) {
+
+							$this->update($user, 'token', $newToken);
+							setcookie('token', $newToken, time() + 604800, '/');
+							return true;
+
+						} else {
+							$this->_error = 'los datos de la plataforma no coinciden con el token';
+							return false;
+						}
 					} else {
 						$this->_error = 'Token inválido';
 						return false;
