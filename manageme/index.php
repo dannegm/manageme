@@ -8,9 +8,6 @@ if (!isset($_COOKIE['user'])) {
 	$u = new User ();
 	$isLogin = $u->login($_COOKIE['user']);
 	if ($isLogin) {
-		$lang = file_get_contents(INLANGS . LANG . '.php');
-			$lang = json_decode($lang);
-
 		$user = $u->getInfo($_COOKIE['user']);
 ?>
 <!doctype html>
@@ -33,7 +30,7 @@ if (!isset($_COOKIE['user'])) {
 			$('#sideMenu li').removeClass('active');
 			switch ( site ) {
 				case 'resume':
-					$('#loadContent').load('<?php echo TOGUIAPPS . "onbuild.php?t=Resume"; ?>');
+					$('#loadContent').load('<?php echo TOGUIAPPS . "resume.php"; ?>');
 					$('.h2resume').show();
 					$('#sideMenu .toResume').addClass('active');
 					break;
@@ -43,7 +40,7 @@ if (!isset($_COOKIE['user'])) {
 					$('#sideMenu .toInbox').addClass('active');
 					break;
 				case 'content':
-					$('#loadContent').load('<?php echo TOGUIAPPS . "onbuild.php?t=Resume"; ?>');
+					$('#loadContent').load('<?php echo TOGUIAPPS . "onbuild.php?t=Content"; ?>');
 					$('.h2content').show();
 					$('#sideMenu .toContent').addClass('active');
 					break;
@@ -105,7 +102,7 @@ if (!isset($_COOKIE['user'])) {
 				loadContent('config');
 			});
 
-			$('#logout').live('click', function() {
+			$('.logout').live('click', function() {
 				$.get('<?php echo TOAPPS . "logout.php"; ?>',{},function(){ window.location.href = 'login.php'; });
 			});
 		}
@@ -149,7 +146,7 @@ if (!isset($_COOKIE['user'])) {
 			<i class="config"></i>
 			<span><?php echo $lang->menu->config; ?></span>
 		</li>
-		<li id="logout">
+		<li class="logout">
 			<i class="exit"></i>
 			<span><?php echo $lang->menu->exit; ?></span>
 		</li>

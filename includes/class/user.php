@@ -43,13 +43,14 @@ class User
 		$rol = 'admin';
 		$status = 'active';
 		$login = 'yep';
+		$avatar = 'avatarPlaceholder.png';
 
 		$token = genToken("{$uid}|{$username}|{$password}");
 
-		$query = "INSERT INTO `{$this->_tb_users}` (`uid`, `username`, `password`, `name`, `email`, `date`, `rol`, `status`, `login`, `token`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		$query = "INSERT INTO `{$this->_tb_users}` (`uid`, `username`, `password`, `name`, `email`, `date`, `rol`, `status`, `login`, `token`, `avatar`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		$conn = $this->_mysqli;
 		$ins = $conn->prepare($query);
-		$ins->bind_param( 'ssssssssss', $uid, $username, $password, $name, $email, $date, $rol, $status, $login, $token);
+		$ins->bind_param( 'sssssssssss', $uid, $username, $password, $name, $email, $date, $rol, $status, $login, $token, $avatar);
 		$insert = $ins->execute();
 
 		if ( !$insert ) {
@@ -98,6 +99,7 @@ class User
 			'email' => $result['email'],
 			'rol' => $result['rol'],
 			'bio' => $result['bio'],
+			'avatar' => $result['avatar'],
 			'date' => $result['date']
 		);
 		return $res;

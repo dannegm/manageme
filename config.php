@@ -17,6 +17,7 @@
 	define('TOJS', DURL . 'includes/js/');
 	define('TOLESS', DURL . 'includes/less/');
 	define('TOIMG', DURL . 'includes/img/');
+	define('TOAVATARS', DURL . 'includes/avatars/');
 
 	// Configuración regional
 
@@ -36,5 +37,9 @@
 	define('TB_USERS', PREFIX . 'users');
 
 	include_once(INPHP . 'functions.php');
+
+	global $lang;
+	$lang = file_get_contents(INLANGS . LANG . '.php');
+		$lang = json_decode($lang);
 
 ?>

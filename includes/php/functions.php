@@ -445,9 +445,9 @@ function getIP () {
 	} else {
 		$myip = $_SERVER['REMOTE_ADDR'];
 	}
-	//return sprintf("%u", ip2long($myip));
+	return sprintf("%u", ip2long($myip));
 	//return ip2long($myip);
-	return $myip;
+	//return $myip;
 }
 
 /*

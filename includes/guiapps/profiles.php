@@ -6,9 +6,6 @@ if (isset($_COOKIE['user'])) {
 	$u = new User ();
 	$isLogin = $u->login($_COOKIE['user']);
 	if ($isLogin) {
-		$lang = file_get_contents(INLANGS . LANG . '.php');
-			$lang = json_decode($lang);
-
 		$user = $u->getInfo($_COOKIE['user']);
 		$myrol = rol2text($user['rol'], $lang);
 ?>
@@ -116,14 +113,6 @@ if (isset($_COOKIE['user'])) {
 					border: 1px dashed #ddd;
 					min-height: 60px;
 				}
-
-	.toolbar {
-		display: block;
-		margin: 20px;
-		overflow: hidden;
-		margin-top: -82px;
-		margin-bottom: 35px;
-	}
 </style>
 
 <nav class="toolbar">
@@ -133,7 +122,7 @@ if (isset($_COOKIE['user'])) {
 <article id="myprofile">
 	<div>
 		<figure>
-			<img src="<?php echo TOIMG . 'avatar.jpg'; ?>" />
+			<img src="<?php echo TOAVATARS . $user['avatar']; ?>" />
 			<figcaption><?php echo $myrol; ?></figcaption>
 		</figure>
 		<div class="bio">
@@ -176,7 +165,7 @@ if (isset($_COOKIE['user'])) {
 	} else {
 ?>
 <blockquote>
-Debes iniciar sesión de nuevo.
+	<?php echo $lang->errors->renew_login; ?>
 </blockquote>
 <?php
 	}

@@ -26,6 +26,11 @@ $lang = array(
 		)
 	),
 
+	'errors' => array(
+		'renew_login' => 'You must login again.',
+		'on_build' => 'The section {[sec]} is under build.'
+	),
+
 	'menu' => array(
 		'resume' => 'Resume',
 		'inbox' => 'Inbox',
@@ -47,8 +52,16 @@ $lang = array(
 		'god' => 'God level'
 	),
 
+	'resume' => array(
+		'title' => 'Profiles',
+		'gui' => array(
+			'wellcome' => 'Wellcome',
+			'logout' => 'Sign out'
+		)
+	),
+
 	'profiles' => array(
-		'title' => 'PProfiles',
+		'title' => 'Profiles',
 		'gui' => array(
 			'myprofile' => 'My profile',
 			'bio' => 'Biografy',

@@ -26,6 +26,11 @@ $lang = array(
 		)
 	),
 
+	'errors' => array(
+		'renew_login' => 'Debes iniciar sesi&oacute;n de nuevo.',
+		'on_build' => 'La secci&oacute;n {[sec]} está en construcci&oacute;n.'
+	),
+
 	'menu' => array(
 		'resume' => 'Resumen',
 		'inbox' => 'Mensajes',
@@ -45,6 +50,14 @@ $lang = array(
 		'sub' => 'Subscriptor',
 		'mod' => 'Moderador',
 		'god' => 'Nivel dios'
+	),
+
+	'resume' => array(
+		'title' => 'Profiles',
+		'gui' => array(
+			'wellcome' => 'Bienvenido',
+			'logout' => 'Salir'
+		)
 	),
 
 	'profiles' => array(

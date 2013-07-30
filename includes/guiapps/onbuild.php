@@ -3,5 +3,9 @@ include_once('../../config.php');
 include_once(INCLASS . 'user.php');
 ?>
 <blockquote>
-La sección <strong><?php echo $_GET['t']; ?></strong> está en construcción.
+<?php
+	$txt = $lang->errors->on_build;
+	$txt = str_replace('{[sec]}', "<strong>{$_GET['t']}</strong>", $txt);
+	echo $txt;
+?>
 </blockquote>
