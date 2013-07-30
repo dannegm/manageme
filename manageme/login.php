@@ -11,8 +11,6 @@ if (isset($_COOKIE['token'])) {
 		header('Location: login.php');
 	}
 } else {
-	$lang = file_get_contents(INLANGS . LANG . '.php');
-		$lang = json_decode($lang);
 ?>
 <!doctype html>
 <!-- [ <?php echo $lang->copyright; ?> - http://dannegm.pro ] -->

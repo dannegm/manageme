@@ -112,9 +112,9 @@ class User
 		$conn->query($sql);
 		$n = $conn->affected_rows;
 		if ($n > 0) {
-			return false;
-		} else {
 			return true;
+		} else {
+			return false;
 		}
 	}
 
@@ -132,6 +132,7 @@ class User
 		} else {
 			session_start();
 			unset($_SESSION['token']);
+			session_destroy();
 		}
 		return true;
 	}
@@ -143,7 +144,7 @@ class User
 				$pass = md5($pass);
 			$user = $user['username'];
 
-			if (!$this->exist($user)) {
+			if ($this->exist($user)) {
 				$pwd = $this->consult('password', $user);
 				if ($pass == $pwd) {
 					$uid = $this->consult('uid', $user);
@@ -172,7 +173,7 @@ class User
 				return false;
 			}
 		} else {
-			if (!$this->exist($user)) {
+			if ($this->exist($user)) {
 				$token = $this->consult('token', $user);
 
 				$uid = $this->consult('uid', $user);
