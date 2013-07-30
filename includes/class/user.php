@@ -106,6 +106,8 @@ class User
 	}
 
 	//!!! Funcionalidad extraña, revisar para 6.1
+	//*** Corregido, era una doble negación
+	/* [- * - = +] */
 	private function exist ($who) {
 		$conn = $this->_mysqli;
 		$sql = "SELECT * FROM `{$this->_tb_users}` WHERE `username` = '{$who}'";
