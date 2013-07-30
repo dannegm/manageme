@@ -120,7 +120,7 @@ class User
 
 	public function logout ($user) {
 		$uid = $this->consult('uid', $user);
-		$token = genToken("{$uid}|{$user}|{$pass}");
+		$token = genToken("{$uid}|{$user}|logout");
 		$this->update($user, 'login', 'nope');
 		$this->update($user, 'token', $token);
 
@@ -206,11 +206,13 @@ class User
 							return true;
 
 						} else {
-							$this->_error = 'Token inválido';
+							$this->logout($user);
+							$this->_error = 'invalid token';
 							return false;
 						}
 					} else {
-						$this->_error = 'Token inválido';
+						$this->logout($user);
+						$this->_error = 'invalid token';
 						return false;
 					}
 				} else {
@@ -220,7 +222,8 @@ class User
 						$_SESSION['token'] = $newToken;
 						return true;
 					} else {
-						$this->_error = 'Token inválido';
+						$this->logout($user);
+						$this->_error = 'invalid token';
 						return false;
 					}
 				}

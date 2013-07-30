@@ -8,7 +8,7 @@ if (isset($_COOKIE['token'])) {
 	if ($isLogin) {
 		header('Location: index.php');
 	} else {
-		die ($user->error());
+		header('Location: login.php');
 	}
 } else {
 	$lang = file_get_contents(INLANGS . LANG . '.php');
