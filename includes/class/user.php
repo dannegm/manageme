@@ -105,6 +105,7 @@ class User
 		return $res;
 	}
 
+	//!!! Funcionalidad extraña, revisar para 6.1
 	private function exist ($who) {
 		$conn = $this->_mysqli;
 		$sql = "SELECT * FROM `{$this->_tb_users}` WHERE `username` = '{$who}'";
